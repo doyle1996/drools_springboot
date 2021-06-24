@@ -3,8 +3,8 @@ Spring Boot整合Drools
 
 目前在企业开发中Spring Boot已经成为主流，本小节我们来进行Spring Boot整合Drools。具体操作步骤：
 
-第一步：创建maven工程drools_springboot并配置pom.xml
-
+### 第一步：创建maven工程drools_springboot并配置pom.xml
+```
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -112,15 +112,17 @@ Spring Boot整合Drools
         </plugins>
     </build>
 </project>
-第二步：创建/resources/application.yml文件
-
+```
+### 第二步：创建/resources/application.yml文件
+```
 server:
   port: 8080
 spring:
   application:
     name: drools_springboot
-第三步：创建规则文件/resources/rules/helloworld.drl
-
+ ```
+### 第三步：创建规则文件/resources/rules/helloworld.drl
+```
 package helloworld
 rule "rule_helloworld"
     when
@@ -128,8 +130,9 @@ rule "rule_helloworld"
     then
         System.out.println("规则：rule_helloworld触发...");
 end
-第四步：编写配置类DroolsConfig
-
+```
+### 第四步：编写配置类DroolsConfig
+```
 package com.itheima.drools.config;
 import org.kie.api.KieBase;
 import org.kie.api.KieServices;
@@ -190,8 +193,9 @@ public class DroolsConfig {
         return new KModuleBeanFactoryPostProcessor();
     }
 }
-第五步：创建RuleService类
-
+```
+### 第五步：创建RuleService类
+```
 package com.itheima.drools.service;
 
 import org.kie.api.KieBase;
@@ -209,8 +213,9 @@ public class RuleService {
         kieSession.dispose();
     }
 }
-第六步：创建HelloController类
-
+```
+### 第六步：创建HelloController类
+```
 package com.itheima.drools.controller;
 
 import com.itheima.drools.service.RuleService;
@@ -229,8 +234,9 @@ public class HelloController {
         return "OK";
     }
 }
-第七步：创建启动类DroolsApplication
-
+```
+### 第七步：创建启动类DroolsApplication
+```
 package com.itheima.drools;
 
 import org.springframework.boot.SpringApplication;
@@ -242,4 +248,5 @@ public class DroolsApplication {
         SpringApplication.run(DroolsApplication.class,args);
     }
 }
-第八步：启动服务，访问http://localhost:8080/hello/rule
+```
+### 第八步：启动服务，访问http://localhost:8080/hello/rule
